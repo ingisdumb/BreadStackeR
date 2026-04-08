@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShelfTrigger : MonoBehaviour
 {
     public GameObject canvasUI; //assigned in inspector
-    public GameObject canvasUI2; //assigned in inspector
-    public GameObject canvasUI3; //assigned in inspector
+    public GameObject canvasBuy; //assigned in inspector
+    public GameObject canvasSell; //assigned in inspector
     public GameObject alwaysOnUI; //assigned in inspector
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,9 +15,9 @@ public class ShelfTrigger : MonoBehaviour
     {
         if (CompareTag("Buy Station"))
         {
-            if (canvasUI2 != null)
+            if (canvasBuy != null)
                 {
-                    canvasUI2.SetActive(true);
+                    canvasBuy.SetActive(true);
                     if (alwaysOnUI != null)
                     {
                         alwaysOnUI.SetActive(false);
@@ -27,9 +27,9 @@ public class ShelfTrigger : MonoBehaviour
         }
         else if (CompareTag("Sell Station"))
         {
-            if (canvasUI3 != null)
+            if (canvasSell != null)
                 {
-                    canvasUI3.SetActive(true);
+                    canvasSell.SetActive(true);
                 if (alwaysOnUI != null)
                     {
                         alwaysOnUI.SetActive(false);;
@@ -56,8 +56,8 @@ public class ShelfTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (canvasUI != null) canvasUI.SetActive(false);
-            if (canvasUI2 != null) canvasUI2.SetActive(false);
-            if (canvasUI3 != null) canvasUI3.SetActive(false);
+            if (canvasBuy != null) canvasBuy.SetActive(false);
+            if (canvasSell != null) canvasSell.SetActive(false);
             if (alwaysOnUI != null) alwaysOnUI.SetActive(true);
         }
     }
