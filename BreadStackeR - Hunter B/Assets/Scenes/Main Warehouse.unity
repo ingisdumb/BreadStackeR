@@ -256,6 +256,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113895610}
   m_CullTransparentMesh: 1
+--- !u!1 &277059188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 277059192}
+  - component: {fileID: 277059191}
+  - component: {fileID: 277059190}
+  - component: {fileID: 277059189}
+  m_Layer: 5
+  m_Name: BreadCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &277059189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277059188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &277059190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277059188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &277059191
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277059188}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &277059192
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277059188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &291367204
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +479,7 @@ GameObject:
   - component: {fileID: 357362672}
   - component: {fileID: 357362671}
   - component: {fileID: 357362673}
+  - component: {fileID: 357362674}
   m_Layer: 0
   m_Name: Shelf MR
   m_TagString: Untagged
@@ -511,6 +613,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breadCount: 7
   playerInventory: {fileID: 0}
+--- !u!114 &357362674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357362669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56ef9b88f41b4fc78d5962bb0e655e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUI: {fileID: 0}
+  canvasUI2: {fileID: 0}
+  canvasUI3: {fileID: 0}
+  alwaysOnUI: {fileID: 0}
 --- !u!1 &378896971
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +938,7 @@ GameObject:
   - component: {fileID: 685172920}
   - component: {fileID: 685172919}
   m_Layer: 0
-  m_Name: Shop Label
+  m_Name: Sell Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1430,9 +1548,10 @@ GameObject:
   - component: {fileID: 960966712}
   - component: {fileID: 960966711}
   - component: {fileID: 960966713}
+  - component: {fileID: 960966714}
   m_Layer: 0
-  m_Name: Shelf Deposit
-  m_TagString: Untagged
+  m_Name: Shelf Sell
+  m_TagString: 'Sell Station '
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1564,6 +1683,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 1495412810}
   breadValue: 5
+--- !u!114 &960966714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960966709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56ef9b88f41b4fc78d5962bb0e655e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUI: {fileID: 0}
+  canvasUI2: {fileID: 0}
+  canvasUI3: {fileID: 0}
+  alwaysOnUI: {fileID: 0}
 --- !u!1 &1103025818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,6 +2423,7 @@ GameObject:
   - component: {fileID: 1442042962}
   - component: {fileID: 1442042961}
   - component: {fileID: 1442042963}
+  - component: {fileID: 1442042964}
   m_Layer: 0
   m_Name: Shelf R
   m_TagString: Untagged
@@ -2421,6 +2557,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breadCount: 5
   playerInventory: {fileID: 0}
+--- !u!114 &1442042964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442042959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56ef9b88f41b4fc78d5962bb0e655e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUI: {fileID: 0}
+  canvasUI2: {fileID: 0}
+  canvasUI3: {fileID: 0}
+  alwaysOnUI: {fileID: 0}
 --- !u!1 &1451736373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,7 +2674,7 @@ GameObject:
   - component: {fileID: 1495412811}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2796,8 +2948,10 @@ GameObject:
   - component: {fileID: 1531555692}
   - component: {fileID: 1531555691}
   - component: {fileID: 1531555693}
+  - component: {fileID: 1531555694}
+  - component: {fileID: 1531555695}
   m_Layer: 0
-  m_Name: Shelf Big Top Left
+  m_Name: ShelfBigTopLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2847,10 +3001,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0022005066, y: 0.0011098981}
+  m_Offset: {x: -0.002200514, y: -0.04200755}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2861,7 +3015,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35922265, y: 0.26642227}
+  m_Size: {x: 0.35, y: 0.35}
   m_EdgeRadius: 0
 --- !u!212 &1531555692
 SpriteRenderer:
@@ -2929,6 +3083,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breadCount: 5
   playerInventory: {fileID: 0}
+--- !u!61 &1531555694
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531555689}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.35, y: 0.25}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.35, y: 0.25}
+  m_EdgeRadius: 0
+--- !u!114 &1531555695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531555689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56ef9b88f41b4fc78d5962bb0e655e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUI: {fileID: 277059188}
+  canvasUI2: {fileID: 0}
+  canvasUI3: {fileID: 0}
+  alwaysOnUI: {fileID: 0}
 --- !u!1 &1608075225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3432,9 +3647,10 @@ GameObject:
   - component: {fileID: 1846495629}
   - component: {fileID: 1846495631}
   - component: {fileID: 1846495630}
+  - component: {fileID: 1846495632}
   m_Layer: 0
   m_Name: Shelf Buy
-  m_TagString: Untagged
+  m_TagString: Buy Station
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3552,6 +3768,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1846495632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846495628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56ef9b88f41b4fc78d5962bb0e655e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUI: {fileID: 0}
+  canvasUI2: {fileID: 0}
+  canvasUI3: {fileID: 0}
+  alwaysOnUI: {fileID: 0}
 --- !u!1 &1887105552
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,6 +3796,7 @@ GameObject:
   - component: {fileID: 1887105555}
   - component: {fileID: 1887105554}
   - component: {fileID: 1887105556}
+  - component: {fileID: 1887105557}
   m_Layer: 0
   m_Name: Shelf ML
   m_TagString: Untagged
@@ -3697,6 +3930,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breadCount: 2
   playerInventory: {fileID: 0}
+--- !u!114 &1887105557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887105552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56ef9b88f41b4fc78d5962bb0e655e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUI: {fileID: 0}
+  canvasUI2: {fileID: 0}
+  canvasUI3: {fileID: 0}
+  alwaysOnUI: {fileID: 0}
 --- !u!1 &1897044989
 GameObject:
   m_ObjectHideFlags: 0
@@ -3813,8 +4062,10 @@ GameObject:
   - component: {fileID: 1932409821}
   - component: {fileID: 1932409820}
   - component: {fileID: 1932409822}
+  - component: {fileID: 1932409823}
+  - component: {fileID: 1932409824}
   m_Layer: 0
-  m_Name: Shelf Big Top Right
+  m_Name: ShelfBigTopRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3867,7 +4118,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0010757744, y: 0.0015655905}
+  m_Offset: {x: 0.0010757744, y: 0.009434693}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3878,7 +4129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3649485, y: 0.2641532}
+  m_Size: {x: 0.3649485, y: 0.24841501}
   m_EdgeRadius: 0
 --- !u!212 &1932409821
 SpriteRenderer:
@@ -3945,7 +4196,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breadCount: 5
-  playerInventory: {fileID: 0}
+  playerInventory: {fileID: 1495412810}
+--- !u!61 &1932409823
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932409818}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.04200755}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.35, y: 0.25}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.35, y: 0.35}
+  m_EdgeRadius: 0
+--- !u!114 &1932409824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932409818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56ef9b88f41b4fc78d5962bb0e655e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUI: {fileID: 0}
+  canvasUI2: {fileID: 0}
+  canvasUI3: {fileID: 0}
+  alwaysOnUI: {fileID: 0}
 --- !u!1 &2102038503
 GameObject:
   m_ObjectHideFlags: 0
@@ -4092,6 +4404,7 @@ GameObject:
   - component: {fileID: 2132102754}
   - component: {fileID: 2132102753}
   - component: {fileID: 2132102755}
+  - component: {fileID: 2132102756}
   m_Layer: 0
   m_Name: Shelf L
   m_TagString: Untagged
@@ -4225,6 +4538,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breadCount: 9
   playerInventory: {fileID: 0}
+--- !u!114 &2132102756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132102751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56ef9b88f41b4fc78d5962bb0e655e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUI: {fileID: 0}
+  canvasUI2: {fileID: 0}
+  canvasUI3: {fileID: 0}
+  alwaysOnUI: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4237,3 +4566,4 @@ SceneRoots:
   - {fileID: 1608075230}
   - {fileID: 1508476851}
   - {fileID: 1897044993}
+  - {fileID: 277059192}
