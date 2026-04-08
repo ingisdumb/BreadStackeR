@@ -1,7 +1,18 @@
 Library/
-PackageCache/
-Obj/
 Temp/
+Obj/
+Build/
+Builds/
 Logs/
 UserSettings/
 
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+.DS_Store
