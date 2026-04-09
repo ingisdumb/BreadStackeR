@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public ovenBreadAmount OvenBreadAmount;
     // Player stats
     public int bread = 0;
     public int money = 0;
@@ -26,6 +27,8 @@ public class PlayerInventory : MonoBehaviour
 
         if (buyMixerButton != null)
             buyMixerButton.onClick.AddListener(BuyMixer);
+        if (OvenBreadAmount != null)
+            bread = OvenBreadAmount.breadAmount; // Start with random bread from oven
     }
 
     // --- Purchase Methods ---

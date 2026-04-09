@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AddBreadWhenClicked : MonoBehaviour
 {
-    public int breadCount = 5;                  // Bread available on this shelf
+    public int breadCount = 5;  // Bread available on this shelf   
     public PlayerInventory playerInventory;     // Assign PlayerInventory in Inspector
 
     void Start()
