@@ -5,18 +5,12 @@ using TMPro;
 
 public class BuyCanvasDisplay : MonoBehaviour
 {
-    public TMP_Text moniesText;
+    public TMP_Text moniesText;             // UI text for money
+    public PlayerInventory playerInventory; // Reference to player data
 
-    public PlayerInventory playerInventory;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        // Update money display in buy UI
         moniesText.text = "Monies: " + playerInventory.money.ToString();
     }
 }

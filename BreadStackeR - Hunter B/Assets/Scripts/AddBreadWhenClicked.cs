@@ -5,23 +5,26 @@ using UnityEngine.UI;
 
 public class AddBreadWhenClicked : MonoBehaviour
 {
-    public int breadCount = 5;  // Bread available on this shelf   
-    public PlayerInventory playerInventory;     // Assign PlayerInventory in Inspector
+    public int breadCount = 5;              // Bread available on this shelf
+    public PlayerInventory playerInventory; // Reference to player inventory
 
     void Start()
     {
-        // Optional: auto-find player inventory if not assigned
+        // Auto-find PlayerInventory if not assigned
         if (playerInventory == null)
         {
             playerInventory = FindObjectOfType<PlayerInventory>();
         }
     }
 
+    // Called when object is clicked
     void OnMouseDown()
     {
         if (breadCount > 0)
         {
             breadCount--;
+
+            // Add bread to player
             if (playerInventory != null)
             {
                 playerInventory.AddBread();
@@ -29,6 +32,7 @@ public class AddBreadWhenClicked : MonoBehaviour
 
             Debug.Log(gameObject.name + " bread left: " + breadCount);
 
+            // Notify when empty
             if (breadCount == 0)
             {
                 Debug.Log(gameObject.name + " is empty!");

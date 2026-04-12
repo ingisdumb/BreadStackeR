@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class DepositShelf : MonoBehaviour
 {
-    public PlayerInventory playerInventory;  // Assign PlayerInventory in Inspector
-    public int breadValue = 5;               // Money per bread
+    public PlayerInventory playerInventory; // Player inventory reference
+    public int breadValue = 5;              // Money earned per bread
 
     void Start()
     {
-        // Optional: auto-find player inventory if not assigned
+        // Auto-find PlayerInventory if not assigned
         if (playerInventory == null)
         {
             playerInventory = FindObjectOfType<PlayerInventory>();
         }
     }
 
+    // Called when this object is clicked
     void OnMouseDown()
     {
         if (playerInventory != null)
         {
+            // Try to remove bread and reward money
             if (playerInventory.RemoveBread())
             {
                 playerInventory.AddMoney(breadValue);

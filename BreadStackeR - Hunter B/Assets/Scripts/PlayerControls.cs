@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public float speed = 30.0f;
+    public float speed = 30.0f; // Movement speed
 
     private Rigidbody2D rb2d;
     private Vector2 velocity;
@@ -12,22 +12,21 @@ public class PlayerControls : MonoBehaviour
     private float xInput;
     private float yInput;
 
-    public Animator animator; 
+    public Animator animator; // Animator reference (currently unused)
 
-    // Start is called before the first frame update
     void Start()
     {
+        // Cache Rigidbody component
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-       xInput = Input.GetAxisRaw("Horizontal");
-       yInput = Input.GetAxisRaw("Vertical");
+        // Get raw input (no smoothing)
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
 
-       
-
+        // Apply movement
         rb2d.velocity = new Vector2(xInput * speed, yInput * speed);
     }
 }
