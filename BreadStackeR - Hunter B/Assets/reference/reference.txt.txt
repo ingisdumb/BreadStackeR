@@ -1,0 +1,220 @@
+To get a button to control a function:
+
+	1. Select Button
+	2. OnClick() → +
+	3. Drag Player (has PlayerInventory)
+	4. Choose function:
+   		- AddBread(int)
+   		- RemoveBread(int)
+   		- AddMoney(int)
+	5. Set value in inspector
+
+	If function doesnt show:
+		- Must be public
+		- Must be in MonoBehaviour
+		- Must return void (bool is okay but ignored)
+
+	EX: 
+	// Add button listener in code
+	button.onClick.AddListener(MyFunction);
+
+	// Simple inventory function
+	public void AddMoney(int amount)
+	{
+    		money += amount;
+	}
+
+
+Triggers:
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+    		if (other.CompareTag("Player"))
+    		{
+        		// Do something
+    		}
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+    		if (other.CompareTag("Player"))
+    		{
+        		// Undo / reset
+    		}
+	}
+
+	Good for:
+		- UI Elements
+		- Selecting Objects
+		- Shops
+		- Interaction zones
+
+	Required:
+		- Collider2D on both objects
+		- One object must have Rigidbody2D
+		- "Is Trigger" must be checked
+
+
+Mouse Interaction:
+
+	void OnMouseDown()
+	{
+    		// Do something when clicked
+	}
+
+	Required: 
+		- Collider on object
+		- Not blocked by UI (Canvas)
+
+
+Inventory System (Core Pattern):
+
+	public int bread;
+	public int money;
+
+	public void AddBread(int amount = 1)
+	{
+    		bread += amount;
+	}
+
+	public bool RemoveBread(int amount = 1)
+	{
+    		if (bread >= amount)
+    		{
+        		bread -= amount;
+        		return true;
+    		}
+    		return false;
+	}
+
+	public void AddMoney(int amount)
+	{
+    		money += amount;
+	}
+
+	Pattern:
+		Check → Change → Return success
+
+
+Safe Remove Pattern (VERY IMPORTANT):
+
+	if (playerInventory.RemoveBread())
+	{
+    		playerInventory.AddMoney(5);
+	}
+
+	Use when:
+		- Selling items
+		- Consuming resources
+		- Preventing negative values
+
+
+Update UI Text:
+
+	void Update()
+	{
+    		text.text = "Money: " + player.money;
+	}
+
+	Notes:
+		- Runs every frame
+		- Fine for small projects
+
+
+Selecting Objects (Target System):
+
+	public static ovenBreadAmount currentTarget;
+
+	OnTriggerEnter:
+		currentTarget = bread;
+
+	OnTriggerExit:
+		currentTarget = null;
+
+	Used for:
+		- Interacting with nearest object
+		- Context-based actions
+
+
+Get Component:
+
+	var comp = GetComponent<MyScript>();
+
+	Use when:
+		- Script is on the same GameObject
+
+
+Find Object (Backup Method):
+
+	playerInventory = FindObjectOfType<PlayerInventory>();
+
+	Use when:
+		- You forgot to assign in Inspector
+
+	Warning:
+		- Slower than direct reference
+
+
+Enable / Disable UI:
+
+	canvas.SetActive(true);   // show
+	canvas.SetActive(false);  // hide
+
+	Common use:
+		- Trigger zones
+		- Menus
+
+
+Common Mistakes:
+
+	Button not working:
+		- Function not public
+		- Object not assigned
+		- Button not interactable
+
+	OnMouseDown not working:
+		- No collider
+		- UI blocking it
+
+	Trigger not working:
+		- No Rigidbody2D
+		- IsTrigger not checked
+
+	Values not updating:
+		- Wrong PlayerInventory reference
+
+
+Game Loop (Your Project):
+
+	Get bread
+	→ Store in inventory
+	→ Sell bread
+	→ Get money
+	→ Buy upgrades
+
+
+Mental Model (MOST IMPORTANT):
+
+	Player does something
+	→ Function runs
+	→ Variable changes
+	→ UI updates
+
+
+Useful Mini Patterns:
+
+	Add → Remove → Reward:
+		if (RemoveBread())
+		{
+    			AddMoney(5);
+		}
+
+	Button → Inventory:
+		public void AddOneBread()
+		{
+    			AddBread(1);
+		}
+
+	Trigger → UI:
+		OnTriggerEnter → Show UI
+		OnTriggerExit → Hide UI
