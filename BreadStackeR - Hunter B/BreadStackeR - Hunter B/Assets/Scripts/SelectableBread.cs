@@ -17,7 +17,7 @@ public class SelectableBread : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            BreadGet.currentTarget = bread;
+            PlayerInventory inventory = other.GetComponent<PlayerInventory>();
             Debug.Log(gameObject.name + " selected");
         }
     }
@@ -25,9 +25,8 @@ public class SelectableBread : MonoBehaviour
     // When player leaves, deselect if it's the current target
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && BreadGet.currentTarget == bread)
+        if (other.CompareTag("Player"))
         {
-            BreadGet.currentTarget = null;
             Debug.Log(gameObject.name + " deselected");
         }
     }

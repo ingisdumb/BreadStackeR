@@ -15,10 +15,17 @@ public class PlayerInventory : MonoBehaviour
     // UI Buttons
     public Button buyDoughButton;
     public Button buyMixerButton;
+    public Button takeBreadButton;
+    public Button sellBreadButton;
 
     // Item costs
     private int doughCost = 10;
     private int mixerCost = 50;
+
+    //Bread Sell Price
+    private int breadSell = 10;
+
+    //Button Listeners
 
     void Start()
     {
@@ -28,11 +35,31 @@ public class PlayerInventory : MonoBehaviour
 
         if (buyMixerButton != null)
             buyMixerButton.onClick.AddListener(BuyMixer);
+        
+        if (takeBreadButton != null)
+            takeBreadButton.onClick.AddListener(() => AddBread(1));
+        
+        if (sellBreadButton != null)
+        {
+            sellBreadButton.onClick.AddListener(SellBread);
+        }
+            
 
         // Initialize bread from oven (if assigned)
         if (OvenBreadAmount != null)
             bread = OvenBreadAmount.breadAmount;
     }
+
+    //New Sell logic
+    void SellBread()
+    {
+        if (bread > 0)
+        {
+            RemoveBread(1);
+            AddMoney(breadSell);
+        }
+    }
+    
 
     // Purchase dough if player has enough money
     void BuyDough()
