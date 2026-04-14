@@ -5018,6 +5018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1413273682}
   - component: {fileID: 1413273683}
+  - component: {fileID: 1413273684}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5056,6 +5057,19 @@ MonoBehaviour:
   alwaysOnCanvas: {fileID: 1608075225}
   settingsCanvas: {fileID: 1278171779}
   confirmationPanel: {fileID: 2121265595}
+--- !u!114 &1413273684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413273681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aea543e2254b49569fcf41fec6d928d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 726715745}
 --- !u!1 &1438664623
 GameObject:
   m_ObjectHideFlags: 0
