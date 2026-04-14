@@ -26,17 +26,21 @@ public class PauseManager : MonoBehaviour
         settingsCanvas.SetActive(true);
         pauseCanvas.SetActive(false);
     }
+
+    public void BackToMenu()
+    {
+        settingsCanvas.SetActive(false);
+        pauseCanvas.SetActive(true);
+    }
     
     public void Quit() //quit to main menu
     {
         confirmationPanel.SetActive(true);
-        pauseCanvas.SetActive(false);
     }
     
     public void CancelQuit() //cancel quit to main menu
     {
         confirmationPanel.SetActive(false);
-        pauseCanvas.SetActive(true);
     }
 
     public void ConfirmQuit()
