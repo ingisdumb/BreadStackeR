@@ -2,19 +2,53 @@ using UnityEngine;
 
 public class ovenBreadAmount : MonoBehaviour
 {
-    public int breadAmount; // Current bread stored in this object
+    public int breadAmount = 1; // Current bread stored in this shelf
+    public int maxBreadAmount = 5; // Maximum bread this shelf can hold
 
-    void Start()
+    void Awake()
     {
-        // Assign random bread amount for testing
-        breadAmount = Random.Range(1, 10);
-        Debug.Log(gameObject.name + " bread: " + breadAmount);
+        breadAmount = Mathf.Clamp(breadAmount, 0, maxBreadAmount);
     }
 
-    // Remove bread but never go below zero
-    public void RemoveBread(int amount)
+    public bool TakeBread(int amount = 1)
     {
-        breadAmount = Mathf.Max(0, breadAmount - amount);
+        if (amount <= 0 || breadAmount < amount)
+        {
+            return false;
+        }
+
+        breadAmount -= amount;
         Debug.Log(gameObject.name + " bread left: " + breadAmount);
+        return true;
+    }
+
+    public bool AddBread(int amount = 1)
+    {
+        if (amount <= 0)
+        {
+            return false;
+        }
+
+        int spaceRemaining = maxBreadAmount - breadAmount;
+        if (spaceRemaining <= 0)
+        {
+            Debug.Log(gameObject.name + " is full!");
+            return false;
+        }
+
+        int amountAdded = Mathf.Min(amount, spaceRemaining);
+        breadAmount += amountAdded;
+        Debug.Log(gameObject.name + " bread restocked to: " + breadAmount);
+        return amountAdded > 0;
+    }
+
+    public bool HasBread()
+    {
+        return breadAmount > 0;
+    }
+
+    public bool HasRoom()
+    {
+        return breadAmount < maxBreadAmount;
     }
 }

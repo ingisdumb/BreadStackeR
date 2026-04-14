@@ -18,6 +18,11 @@ public class SelectableBread : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+            if (inventory != null)
+            {
+                inventory.SetSelectedShelf(bread);
+            }
+
             Debug.Log(gameObject.name + " selected");
         }
     }
@@ -27,6 +32,12 @@ public class SelectableBread : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+            if (inventory != null)
+            {
+                inventory.ClearSelectedShelf(bread);
+            }
+
             Debug.Log(gameObject.name + " deselected");
         }
     }

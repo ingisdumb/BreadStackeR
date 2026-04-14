@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerInventory : MonoBehaviour
 {
     public ovenBreadAmount OvenBreadAmount; // Reference to oven bread source
+    public Button depositDoughButton;
 
     // Player resource values
     public int bread = 0;
@@ -25,10 +26,16 @@ public class PlayerInventory : MonoBehaviour
     //Bread Sell Price
     private int breadSell = 10;
 
-    //Button Listeners
+    private ovenBreadAmount selectedShelf;
 
+    //Button Listeners
     void Start()
     {
+        if (depositDoughButton == null)
+        {
+            depositDoughButton = FindButtonByName("Deposit Dough");
+        }
+
         // Assign button click listeners
         if (buyDoughButton != null)
             buyDoughButton.onClick.AddListener(BuyDough);
@@ -37,7 +44,10 @@ public class PlayerInventory : MonoBehaviour
             buyMixerButton.onClick.AddListener(BuyMixer);
         
         if (takeBreadButton != null)
-            takeBreadButton.onClick.AddListener(() => AddBread(1));
+            takeBreadButton.onClick.AddListener(TakeBreadFromSelectedShelf);
+
+        if (depositDoughButton != null)
+            depositDoughButton.onClick.AddListener(DepositDoughToSelectedShelf);
         
         if (sellBreadButton != null)
         {
@@ -48,6 +58,19 @@ public class PlayerInventory : MonoBehaviour
         // Initialize bread from oven (if assigned)
         if (OvenBreadAmount != null)
             bread = OvenBreadAmount.breadAmount;
+    }
+
+    void Update()
+    {
+        if (takeBreadButton != null)
+        {
+            takeBreadButton.interactable = selectedShelf != null && selectedShelf.HasBread();
+        }
+
+        if (depositDoughButton != null)
+        {
+            depositDoughButton.interactable = selectedShelf != null && dough > 0 && selectedShelf.HasRoom();
+        }
     }
 
     //New Sell logic
@@ -90,11 +113,56 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    void TakeBreadFromSelectedShelf()
+    {
+        if (selectedShelf == null)
+        {
+            Debug.Log("No shelf selected.");
+            return;
+        }
+
+        if (selectedShelf.TakeBread())
+        {
+            AddBread(1);
+        }
+        else
+        {
+            Debug.Log("Shelf is empty!");
+        }
+    }
+
+    void DepositDoughToSelectedShelf()
+    {
+        if (selectedShelf == null)
+        {
+            Debug.Log("No shelf selected.");
+            return;
+        }
+
+        if (dough <= 0)
+        {
+            Debug.Log("Not enough dough!");
+            return;
+        }
+
+        if (!selectedShelf.HasRoom())
+        {
+            Debug.Log(selectedShelf.gameObject.name + " is already full.");
+            return;
+        }
+
+        if (RemoveDough(1))
+        {
+            selectedShelf.AddBread(1);
+        }
+    }
+
     // Add bread to inventory
     public void AddBread(int amount = 1)
     {
         bread += amount;
         Debug.Log("Player bread: " + bread);
+        
     }
 
     // Remove bread if possible
@@ -123,5 +191,45 @@ public class PlayerInventory : MonoBehaviour
     {
         dough += amount;
         Debug.Log("Player dough: " + dough);
+    }
+
+    public bool RemoveDough(int amount = 1)
+    {
+        if (dough >= amount)
+        {
+            dough -= amount;
+            Debug.Log("Removed " + amount + " dough.");
+            return true;
+        }
+
+        Debug.Log("Not enough dough!");
+        return false;
+    }
+
+    public void SetSelectedShelf(ovenBreadAmount shelf)
+    {
+        selectedShelf = shelf;
+    }
+
+    public void ClearSelectedShelf(ovenBreadAmount shelf)
+    {
+        if (selectedShelf == shelf)
+        {
+            selectedShelf = null;
+        }
+    }
+
+    Button FindButtonByName(string buttonName)
+    {
+        Button[] buttons = Resources.FindObjectsOfTypeAll<Button>();
+        foreach (Button button in buttons)
+        {
+            if (button.name == buttonName && button.gameObject.scene.IsValid())
+            {
+                return button;
+            }
+        }
+
+        return null;
     }
 }
