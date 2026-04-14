@@ -153,7 +153,18 @@ public class PlayerInventory : MonoBehaviour
 
         if (RemoveDough(1))
         {
-            selectedShelf.AddBread(1);
+            StartCoroutine(DelayedPart(selectedShelf, 3f));
+
+            IEnumerator DelayedPart(ovenBreadAmount shelf, float time = 3f)
+            {
+                yield return new WaitForSeconds(time);
+                if (shelf != null)
+                {
+                    shelf.AddBread(1);
+                }
+                Debug.Log("Baked bread at " + selectedShelf.gameObject.name);
+            }
+            
         }
     }
 
