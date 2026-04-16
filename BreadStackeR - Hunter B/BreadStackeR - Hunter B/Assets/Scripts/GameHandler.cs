@@ -10,6 +10,11 @@ public class GameHandler : MonoBehaviour
     public void damagePlayer(int damage)
     {
         healthSystem.Damage(damage);
+
+        if (healthSystem.getHealth() <= 0)
+        {
+            killPlayer();
+        }
     }
 
     void Start()
@@ -21,27 +26,6 @@ public class GameHandler : MonoBehaviour
         healthBar.Setup(healthSystem);
 
         Debug.Log("Health: " + healthSystem.getHealth());
-    }
-
-    void Update()
-    {
-        // TEST INPUT (so you can see the slider move)
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            healthSystem.Damage(10);
-            Debug.Log("Damage → " + healthSystem.getHealth());
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            healthSystem.Heal(10);
-            Debug.Log("Heal → " + healthSystem.getHealth());
-        }
-        if (healthSystem.getHealth() <= 0)
-        {
-            killPlayer();
-        }
     }
 
     void killPlayer()

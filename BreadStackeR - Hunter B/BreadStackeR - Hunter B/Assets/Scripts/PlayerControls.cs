@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
@@ -7,12 +5,9 @@ public class PlayerControls : MonoBehaviour
     public float speed = 30.0f; // Movement speed
 
     private Rigidbody2D rb2d;
-    private Vector2 velocity;
 
     private float xInput;
     private float yInput;
-
-    public Animator animator; // Animator reference (currently unused)
 
     void Start()
     {

@@ -1,11 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public ovenBreadAmount OvenBreadAmount; // Reference to oven bread source
     public Button depositDoughButton;
 
     // Player resource values
@@ -54,10 +52,6 @@ public class PlayerInventory : MonoBehaviour
             sellBreadButton.onClick.AddListener(SellBread);
         }
             
-
-        // Initialize bread from oven (if assigned)
-        if (OvenBreadAmount != null)
-            bread = OvenBreadAmount.breadAmount;
     }
 
     void Update()

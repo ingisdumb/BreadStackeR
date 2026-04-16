@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class enemySpawner : MonoBehaviour
@@ -10,9 +8,6 @@ public class enemySpawner : MonoBehaviour
     public float xThreshold;
     public float spawnInterval = 3f;
     public float currentTimer;
-    
-    public bool playerInSpawnXRange;
-    
     
     // Start is called before the first frame update
     void Start()
@@ -30,7 +25,6 @@ public class enemySpawner : MonoBehaviour
 
         if (player.position.x > xThreshold)
         {
-            playerInSpawnXRange = true;
             currentTimer -= Time.deltaTime;
             
             if (currentTimer <= 0)
@@ -42,7 +36,6 @@ public class enemySpawner : MonoBehaviour
         }
         else
         {
-            playerInSpawnXRange = false;
             currentTimer = spawnInterval;
         }
     }
