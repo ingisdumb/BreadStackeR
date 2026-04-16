@@ -36,6 +36,11 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null || gameHandler == null)
+        {
+            return;
+        }
+
         if (target)
         {
             Vector3 direction = (target.position - transform.position).normalized;
@@ -66,7 +71,7 @@ public class EnemyScript : MonoBehaviour
                 gameHandler.damagePlayer(5);
             }
 
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

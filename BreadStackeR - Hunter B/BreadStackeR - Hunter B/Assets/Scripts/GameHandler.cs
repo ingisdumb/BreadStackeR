@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
@@ -37,5 +38,15 @@ public class GameHandler : MonoBehaviour
             healthSystem.Heal(10);
             Debug.Log("Heal → " + healthSystem.getHealth());
         }
+        if (healthSystem.getHealth() <= 0)
+        {
+            killPlayer();
+        }
     }
+
+    void killPlayer()
+    {
+        SceneManager.LoadScene("DeathScene");
+    }
+    
 }
