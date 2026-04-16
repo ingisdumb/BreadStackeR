@@ -155,8 +155,8 @@ public class PlayerInventory : MonoBehaviour
                 if (shelf != null)
                 {
                     shelf.AddBread(1);
+                    Debug.Log("Baked bread at " + shelf.gameObject.name);
                 }
-                Debug.Log("Baked bread at " + selectedShelf.gameObject.name);
             }
             
         }
