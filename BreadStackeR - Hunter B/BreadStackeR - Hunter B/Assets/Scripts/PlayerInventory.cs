@@ -24,7 +24,8 @@ public class PlayerInventory : MonoBehaviour
     //Bread Sell Price
     private int breadSell = 10;
 
-    private ovenBreadAmount selectedShelf;
+    private ovenBreadAmount selectedStorage;
+    private OvenBaker selectedOven;
 
     //Button Listeners
     void Start()
@@ -58,12 +59,12 @@ public class PlayerInventory : MonoBehaviour
     {
         if (takeBreadButton != null)
         {
-            takeBreadButton.interactable = selectedShelf != null && selectedShelf.HasBread();
+            takeBreadButton.interactable = selectedStorage != null && selectedStorage.HasBread();
         }
 
         if (depositDoughButton != null)
         {
-            depositDoughButton.interactable = selectedShelf != null && dough > 0 && selectedShelf.HasRoom();
+            depositDoughButton.interactable = selectedOven != null && dough > 0 && selectedStorage == null;
         }
     }
 
@@ -109,14 +110,17 @@ public class PlayerInventory : MonoBehaviour
 
     void TakeBreadFromSelectedShelf()
     {
-        if (selectedShelf == null)
+        Debug.Log("Attempting take bread. Storage selected: " + (selectedStorage != null ? selectedStorage.gameObject.name : "null"));
+
+        if (selectedStorage == null)
         {
             Debug.Log("No shelf selected.");
             return;
         }
 
-        if (selectedShelf.TakeBread())
+        if (selectedStorage.TakeBread())
         {
+            Debug.Log("Took bread successfully.");
             AddBread(1);
         }
         else
@@ -127,9 +131,17 @@ public class PlayerInventory : MonoBehaviour
 
     void DepositDoughToSelectedShelf()
     {
-        if (selectedShelf == null)
+        Debug.Log("Attempting deposit. Oven: " + (selectedOven != null ? selectedOven.gameObject.name : "null") + " Storage: " + (selectedStorage != null ? selectedStorage.gameObject.name : "null"));
+
+        if (selectedStorage != null)
         {
-            Debug.Log("No shelf selected.");
+            Debug.Log("Invalid selection: cannot deposit while storage is selected.");
+            return;
+        }
+
+        if (selectedOven == null)
+        {
+            Debug.Log("No oven selected.");
             return;
         }
 
@@ -139,26 +151,10 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
 
-        if (!selectedShelf.HasRoom())
-        {
-            Debug.Log(selectedShelf.gameObject.name + " is already full.");
-            return;
-        }
-
         if (RemoveDough(1))
         {
-            StartCoroutine(DelayedPart(selectedShelf, 3f));
-
-            IEnumerator DelayedPart(ovenBreadAmount shelf, float time = 3f)
-            {
-                yield return new WaitForSeconds(time);
-                if (shelf != null)
-                {
-                    shelf.AddBread(1);
-                    Debug.Log("Baked bread at " + shelf.gameObject.name);
-                }
-            }
-            
+            Debug.Log("Deposited dough to oven.");
+            selectedOven.AddDough(1);
         }
     }
 
@@ -211,17 +207,45 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
+    public void SetSelectedStorage(ovenBreadAmount shelf)
+    {
+        Debug.Log("Selected storage: " + (shelf != null ? shelf.gameObject.name : "null"));
+        selectedStorage = shelf;
+    }
+
+    public void ClearSelectedStorage(ovenBreadAmount shelf)
+    {
+        if (selectedStorage == shelf)
+        {
+            Debug.Log("Cleared storage selection: " + shelf.gameObject.name);
+            selectedStorage = null;
+        }
+    }
+
+    public void SetSelectedOven(OvenBaker oven)
+    {
+        Debug.Log("Selected oven: " + (oven != null ? oven.gameObject.name : "null"));
+        selectedOven = oven;
+    }
+
+    public void ClearSelectedOven(OvenBaker oven)
+    {
+        if (selectedOven == oven)
+        {
+            Debug.Log("Cleared oven selection: " + oven.gameObject.name);
+            selectedOven = null;
+        }
+    }
+
+    // TEMP compatibility for old scripts (SelectableBread, etc.)
     public void SetSelectedShelf(ovenBreadAmount shelf)
     {
-        selectedShelf = shelf;
+        SetSelectedStorage(shelf);
     }
 
     public void ClearSelectedShelf(ovenBreadAmount shelf)
     {
-        if (selectedShelf == shelf)
-        {
-            selectedShelf = null;
-        }
+        ClearSelectedStorage(shelf);
     }
 
     Button FindButtonByName(string buttonName)

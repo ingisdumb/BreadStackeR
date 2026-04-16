@@ -2548,7 +2548,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &711313451
 GameObject:
@@ -2719,7 +2719,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &726715743
 GameObject:
@@ -6598,11 +6598,11 @@ GameObject:
   - component: {fileID: 1531555691}
   - component: {fileID: 1531555694}
   - component: {fileID: 1531555695}
-  - component: {fileID: 1531555696}
   - component: {fileID: 1531555697}
+  - component: {fileID: 1531555698}
   m_Layer: 0
   m_Name: ShelfBigTopLeft
-  m_TagString: Untagged
+  m_TagString: Oven
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6780,20 +6780,6 @@ MonoBehaviour:
   canvasBuy: {fileID: 0}
   canvasSell: {fileID: 0}
   alwaysOnUI: {fileID: 1608075225}
---- !u!114 &1531555696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531555689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 112b7d1f5dcd3445fb73975b0454848b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  breadAmount: 1
-  maxBreadAmount: 5
 --- !u!114 &1531555697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6806,6 +6792,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e4e5286cdf444ae913d305890601d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1531555698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531555689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9191324e3c61f4020980414cc7b0119a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  queuedDough: 0
+  bakeTime: 5
+  safeShelves:
+  - {fileID: 2132102758}
+  - {fileID: 1887105559}
+  - {fileID: 357362676}
+  - {fileID: 1442042966}
 --- !u!1 &1599541928
 GameObject:
   m_ObjectHideFlags: 0
@@ -8400,11 +8405,11 @@ GameObject:
   - component: {fileID: 1932409820}
   - component: {fileID: 1932409823}
   - component: {fileID: 1932409824}
+  - component: {fileID: 1932409827}
   - component: {fileID: 1932409826}
-  - component: {fileID: 1932409825}
   m_Layer: 0
   m_Name: ShelfBigTopRight
-  m_TagString: Untagged
+  m_TagString: Oven
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8582,20 +8587,6 @@ MonoBehaviour:
   canvasBuy: {fileID: 1897044989}
   canvasSell: {fileID: 0}
   alwaysOnUI: {fileID: 1608075225}
---- !u!114 &1932409825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932409818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 112b7d1f5dcd3445fb73975b0454848b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  breadAmount: 1
-  maxBreadAmount: 5
 --- !u!114 &1932409826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8608,6 +8599,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e4e5286cdf444ae913d305890601d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1932409827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932409818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9191324e3c61f4020980414cc7b0119a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  queuedDough: 0
+  bakeTime: 5
+  safeShelves:
+  - {fileID: 2132102758}
+  - {fileID: 1887105559}
+  - {fileID: 357362676}
+  - {fileID: 1442042966}
 --- !u!1 &1978004666
 GameObject:
   m_ObjectHideFlags: 0

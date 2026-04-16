@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Buy Station
   - Sell Station
+  - Oven
   layers:
   - Default
   - TransparentFX
