@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
+  damageAmount: 20
   gameHandler: {fileID: 0}
 --- !u!61 &1859812395786567354
 BoxCollider2D:

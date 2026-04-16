@@ -4,6 +4,8 @@ public class EnemyScript : MonoBehaviour
 {
     public float moveSpeed = 2f;
 
+    public int damageAmount = 5;
+
     private Rigidbody2D rb;
     private Transform target;
 
@@ -66,7 +68,7 @@ public class EnemyScript : MonoBehaviour
         {
             if (gameHandler != null)
             {
-                gameHandler.damagePlayer(5);
+                gameHandler.damagePlayer(damageAmount);
             }
 
             Destroy(gameObject);
