@@ -10,6 +10,8 @@ public class EnemyScript : MonoBehaviour
     private Transform target;
 
     private Vector2 moveDirection;
+    
+    public GameHandler gameHandler;
 
 
     private void Awake()
@@ -19,7 +21,16 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("Player").transform;
+        GameObject playerObject = GameObject.Find("Player");
+        if (playerObject != null)
+        {
+            target = playerObject.transform;
+        }
+
+        if (gameHandler == null)
+        {
+            gameHandler = FindObjectOfType<GameHandler>();
+        }
     }
 
     // Update is called once per frame
@@ -43,6 +54,19 @@ public class EnemyScript : MonoBehaviour
         if (target)
         {
             rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (gameHandler != null)
+            {
+                gameHandler.damagePlayer(5);
+            }
+
+            gameObject.SetActive(false);
         }
     }
 }

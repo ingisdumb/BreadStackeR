@@ -6,6 +6,11 @@ public class GameHandler : MonoBehaviour
 
     private HealthSystemPlayer healthSystem;
 
+    public void damagePlayer(int damage)
+    {
+        healthSystem.Damage(damage);
+    }
+
     void Start()
     {
         // Create and store the health system
