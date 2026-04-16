@@ -189,7 +189,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2324,8 +2324,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 06abbf1dea08d4957be2317ebfa90f37, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2991,7 +2991,6 @@ MonoBehaviour:
   xThreshold: 35
   spawnInterval: 3
   currentTimer: 0
-  playerInSpawnXRange: 0
 --- !u!4 &816468341
 Transform:
   m_ObjectHideFlags: 0
@@ -6280,7 +6279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  animator: {fileID: 1495412811}
 --- !u!50 &1495412809
 Rigidbody2D:
   serializedVersion: 4
@@ -6320,7 +6318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61f2e07e1704ed4a9fded979626e4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OvenBreadAmount: {fileID: 0}
   depositDoughButton: {fileID: 1308057020}
   bread: 0
   money: 0
@@ -9150,8 +9147,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6adecc7c0b84d4238bb7b75431ba1291, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
