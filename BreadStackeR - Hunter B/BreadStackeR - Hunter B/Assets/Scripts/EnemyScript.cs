@@ -73,5 +73,9 @@ public class EnemyScript : MonoBehaviour
 
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
