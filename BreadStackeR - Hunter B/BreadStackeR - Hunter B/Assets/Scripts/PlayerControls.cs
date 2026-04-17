@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayerControls : MonoBehaviour
 {
-    public float speed = 30.0f; // Movement speed
+    public float speed = 10f; // Movement speed
+    public float runSpeed = 15f;
 
     public GameObject shieldObject;
 
@@ -32,5 +33,11 @@ public class PlayerControls : MonoBehaviour
             shieldObject.SetActive(true);
         }
         else shieldObject.SetActive(false);
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = runSpeed;
+        }
+        else speed = runSpeed - 5f;
     }
 }
