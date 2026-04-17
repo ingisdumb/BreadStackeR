@@ -8,6 +8,7 @@ TagManager:
   - Sell Station
   - Oven
   - Shield
+  - LevelBounds
   layers:
   - Default
   - TransparentFX
