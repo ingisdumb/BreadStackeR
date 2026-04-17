@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "BreadStackeR - Hunter B.sln"
+    "dotnet.defaultSolution": "BreadStackeR - Hunter B.slnx"
 }
