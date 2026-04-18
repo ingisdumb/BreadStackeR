@@ -7,6 +7,8 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject menuCanvas;
     public GameObject optionsCanvas;
+    public GameObject controlsCanvas;
+    public GameObject creditsCanvas;
 
     public void PlayGame()
     {
@@ -29,5 +31,20 @@ public class MenuManager : MonoBehaviour
     {
         menuCanvas.SetActive(true);
         optionsCanvas.SetActive(false);
+    }
+    public void DisplayControls()
+    {
+        controlsCanvas.SetActive(true);
+        menuCanvas.SetActive(false);
+    }
+    public void Credits()
+    {
+        menuCanvas.SetActive(false);
+        creditsCanvas.SetActive(true);
+    }
+    public void backFromCredits()
+    {
+        menuCanvas.SetActive(true);
+        creditsCanvas.SetActive(false);
     }
 }
