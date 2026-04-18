@@ -3,41 +3,66 @@ using System.Collections;
 
 public class PlayerControls : MonoBehaviour
 {
-    public float speed = 10f; // Movement speed
-    public float runSpeed = 15f;
+    [SerializeField] private float walkSpeed = 10f;
+    [SerializeField] private float runSpeed = 15f;
+    [SerializeField] private float footstepDelay = 0.2f;
 
-    public GameObject shieldObject;
+    [SerializeField] private GameObject shieldObject;
+    [SerializeField] private AudioSource shieldAudio;
+    [SerializeField] private AudioClip shieldClip;
+    [SerializeField] private AudioSource walkingAudio;
+    [SerializeField] private AudioClip walkingClip;
 
     private Rigidbody2D rb2d;
-
-    private float xInput;
-    private float yInput;
+    private bool footstepScheduled = false;
 
     void Start()
     {
-        // Cache Rigidbody component
         rb2d = GetComponent<Rigidbody2D>();
+        shieldObject.SetActive(false);
     }
 
     void Update()
     {
-        // Get raw input (no smoothing)
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        float xInput = Input.GetAxisRaw("Horizontal");
+        float yInput = Input.GetAxisRaw("Vertical");
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
 
-        // Apply movement
-        rb2d.velocity = new Vector2(xInput * speed, yInput * speed);
+        float currentSpeed = isRunning ? runSpeed : walkSpeed;
+        rb2d.velocity = new Vector2(xInput * currentSpeed, yInput * currentSpeed);
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        // Footstep only triggers when moving and nothing already scheduled
+        if ((xInput != 0 || yInput != 0) && !footstepScheduled)
+        {
+            PlayFootstep();
+        }
+        else if (xInput == 0 && yInput == 0 && walkingAudio.isPlaying)
+        {
+            walkingAudio.Stop();
+        }
+
+        // Shield plays once per click, not every frame
+        if (Input.GetMouseButtonDown(0))
         {
             shieldObject.SetActive(true);
+            shieldAudio.PlayOneShot(shieldClip);
         }
-        else shieldObject.SetActive(false);
-
-        if (Input.GetKey(KeyCode.LeftShift))
+        else if (Input.GetMouseButtonUp(0))
         {
-            speed = runSpeed;
+            shieldObject.SetActive(false);
         }
-        else speed = runSpeed - 5f;
+    }
+
+    void PlayFootstep()
+    {
+        StartCoroutine(PlayFootstepCoroutine());
+    }
+
+    IEnumerator PlayFootstepCoroutine()
+    {
+        footstepScheduled = true;
+        yield return new WaitForSeconds(footstepDelay);
+        walkingAudio.PlayOneShot(walkingClip);
+        footstepScheduled = false;
     }
 }

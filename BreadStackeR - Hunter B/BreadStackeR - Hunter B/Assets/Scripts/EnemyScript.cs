@@ -2,23 +2,22 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public float moveSpeed = 2f;
-
-    public int damageAmount = 5;
+    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private int damageAmount = 5;
+    [SerializeField] private AudioSource shieldBash;
+    [SerializeField] private AudioClip shieldBashClip;
 
     private Rigidbody2D rb;
     private Transform target;
-
+    private GameHandler gameHandler;
     private Vector2 moveDirection;
-    
-    public GameHandler gameHandler;
+    private bool isHit = false;
 
-
-    private void Awake()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         GameObject playerObject = GameObject.Find("Player");
@@ -33,49 +32,45 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (target == null || gameHandler == null)
-        {
             return;
-        }
 
-        if (target)
-        {
-            Vector3 direction = (target.position - transform.position).normalized;
-            moveDirection = direction;
-            
-            /* EXTRA: Set direction of enemy to player's direction
-             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-             rb.rotation = angle;
-             */
-            
-        }
+        Vector3 direction = (target.position - transform.position).normalized;
+        moveDirection = direction;
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (target)
+        if (target != null && !isHit)
         {
-            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+            rb.velocity = moveDirection * moveSpeed;
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if (gameHandler != null)
-            {
-                gameHandler.damagePlayer(damageAmount);
-            }
-
+            gameHandler.damagePlayer(damageAmount);
             Destroy(gameObject);
         }
-        else if (other.gameObject.CompareTag("Shield"))
+        else if (other.CompareTag("Shield"))
         {
-            Destroy(gameObject);
+            isHit = true;
+            GetComponent<Collider2D>().enabled = false;
+            rb.velocity = Vector2.zero;
+            
+            if (shieldBashClip != null)
+            {
+                shieldBash.PlayOneShot(shieldBashClip);
+                Destroy(gameObject, shieldBashClip.length);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

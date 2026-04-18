@@ -1,25 +1,15 @@
 using UnityEngine;
-using UnityEngine.UI;
-
-
+using UnityEngine.Audio;
 
 public class VolumeManager : MonoBehaviour
 {
-    public Slider slider;
-    
-    public void SetVolume(float volume)
-    {
-        volume = Mathf.Clamp01(volume);
-        
-        AudioListener.volume = volume;
-        PlayerPrefs.SetFloat("volume", volume);
-    }
+    [SerializeField] private AudioMixer audioMixer;
+    private const string MasterVolumeParam = "MasterVolume";
 
-    void Start()
+    public void SetMasterVolume(float volume)
     {
-        float saved = PlayerPrefs.GetFloat("volume", 1);
-        
-        AudioListener.volume = saved;
-        slider.value = saved;
+        // Slider 0-1 to dB range -80 to +20
+        float dB = Mathf.Lerp(-80f, 0f, volume);
+        audioMixer.SetFloat(MasterVolumeParam, dB);
     }
 }
