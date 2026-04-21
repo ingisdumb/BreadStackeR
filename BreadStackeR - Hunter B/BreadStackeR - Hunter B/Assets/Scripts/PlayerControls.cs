@@ -8,8 +8,6 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float footstepDelay = 0.2f;
 
     [SerializeField] private GameObject shieldObject;
-    [SerializeField] private AudioSource shieldAudio;
-    [SerializeField] private AudioClip shieldClip;
     [SerializeField] private AudioSource walkingAudio;
     [SerializeField] private AudioClip walkingClip;
 
@@ -45,7 +43,6 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             shieldObject.SetActive(true);
-            shieldAudio.PlayOneShot(shieldClip);
         }
         else if (Input.GetMouseButtonUp(0))
         {
